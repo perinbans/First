@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Mark Calculator</title>
+    <style>
+        body {
+            background-image: url('https://cdn2.iconfinder.com/data/icons/ios7-inspired-mac-icon-set/512/Calculator_512.png');
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .subject {
+            margin-bottom: 10px;
+        }
+        .subject input {
+            width: calc(100% - 120px);
+            padding: 8px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Mark Calculator</h1>
+        <div class="subject">
+            <label for="subject1">Subject 1:</label>
+            <input type="number" id="subject1">
+        </div>
+        <div class="subject">
+            <label for="subject2">Subject 2:</label>
+            <input type="number" id="subject2">
+        </div>
+        <div class="subject">
+            <label for="subject3">Subject 3:</label>
+            <input type="number" id="subject3">
+        </div>
+        <div class="subject">
+            <label for="subject4">Subject 4:</label>
+            <input type="number" id="subject4">
+        </div>
+        <div class="subject">
+            <label for="subject5">Subject 5:</label>
+            <input type="number" id="subject5">
+        </div>
+        <button onclick="calculateMarks()">Calculate</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculateMarks() {
+            const subject1 = parseFloat(document.getElementById('subject1').value) || 0;
+            const subject2 = parseFloat(document.getElementById('subject2').value) || 0;
+            const subject3 = parseFloat(document.getElementById('subject3').value) || 0;
+            const subject4 = parseFloat(document.getElementById('subject4').value) || 0;
+            const subject5 = parseFloat(document.getElementById('subject5').value) || 0;
+
+            const total = subject1 + subject2 + subject3 + subject4 + subject5;
+            const average = total / 5;
+            let grade = '';
+
+            if (average >= 90) {
+                grade = 'A';
+            } else if (average >= 80) {
+                grade = 'B';
+            } else if (average >= 70) {
+                grade = 'C';
+            } else if (average >= 60) {
+                grade = 'D';
+            } else {
+                grade = 'F';
+            }
+
+            document.getElementById('result').innerHTML = `
+                <p>Total Marks: ${total}</p>
+                <p>Average Marks: ${average.toFixed(2)}</p>
+                <p>Grade: ${grade}</p>
+            `;
+        }
+    </script>
+</body>
+</html>
